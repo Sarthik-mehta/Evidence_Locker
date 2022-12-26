@@ -1,0 +1,136 @@
+/* ------------------------services section-------------------------- */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 33%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /*------------------------How Project Works section----------------------------- */
+  
+  .HowProjectWorksBgImg{
+        background-image:url("../img//how-project-works-bg-img.png");
+        width:100%;
+        justify-self:auto;
+        height: 90vh;
+        background-repeat:no-repeat; 
+        background-size: 100% 100%
+    
+
+  }
+
+  /*  right text */
+.top-right {
+    position: absolute;
+    margin: 15%;
+    margin-left: 55%;
+    right: 6px;
+  }
+
+  .column2 {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row2 {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row2:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Style the counter cards */
+  .card2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #0f175b
+    ;
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column2 {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+} 
+
+
+/* background image e-locekr */
+.e-locker-project{
+    background-image:url("../img/E-locker-project.png");
+    width:100%;
+    justify-self:auto;
+    height: 90vh;
+    background-repeat:no-repeat; 
+    background-size: 100% 100% ;
+    margin-top:-10%;
+}
+
+.bottom-image-text{
+  margin: 100;
+}
+
+/* Top left text */
+.top-left-bg {
+    position: absolute;
+    margin: 5%;
+  }
+
+
+/* ------------------------benefits section-------------------------------- */
+/* tbd */
+
+
+
+/* Bottom Image */
+.Bottom-Image{
+    background-image:url("../img/Collaborative-Contract-Bottom-Img.png");
+    width:100%;
+    justify-self:auto;
+    height: 90vh;
+    background-repeat:no-repeat; 
+    background-size: 100% 100% 
+ 
+}

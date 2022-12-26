@@ -1,0 +1,11 @@
+.Upload-evidences{
+
+        background-image:url("../img/upload-evidences-bg-img.png");
+        width:100%;
+        justify-self:auto;
+        height: 90vh;
+        background-repeat:no-repeat; 
+        background-size: 100% 100%
+    
+  
+}
