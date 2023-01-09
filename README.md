@@ -1,9 +1,15 @@
-#Glance of Evidence Locker System
+# Glance of Evidence Locker System
+
 ![image](https://user-images.githubusercontent.com/65113721/211389048-844d3c5f-1cc4-456c-b9bc-0b6edf815a98.png)
+
 ![image](https://user-images.githubusercontent.com/65113721/211389068-4eb32728-8a3b-4f75-8cfb-3e7cc6f0c2e4.png)
+
 ![image](https://user-images.githubusercontent.com/65113721/211389097-6b88e819-c43b-492f-9410-913abf01df0b.png)
+
 ![image](https://user-images.githubusercontent.com/65113721/211389141-85a99f99-be6f-4f67-bc04-08e0ef0c9d41.png)
+
 ![image](https://user-images.githubusercontent.com/65113721/211389159-b56ca03d-45d1-4e7f-bd5e-5df642758afb.png)
+
 ![image](https://user-images.githubusercontent.com/65113721/211389180-34e05bf9-f6be-41b6-9fc1-5cf0fef9f594.png)
 
 # To Install and Run the Project
