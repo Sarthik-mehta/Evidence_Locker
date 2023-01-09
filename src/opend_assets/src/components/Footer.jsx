@@ -13,13 +13,11 @@ function Footer() {
           <Row>
             <Col>
               <p>
-                The Internet Computer's largest digital marketplace for crypto
-                collectibles and non-fungible tokens (NFTs). Buy, sell, and
-                discover exclusive digital items.
+                The Evidence Locker using Internet Computer is Future of Evidence storing systems.
               </p>
             </Col>
             <Col>
-              <p>Copyright ⓒ {year}</p>
+              <p>Project developed by Sarthik © {year}</p>
             </Col>
           </Row>
         </Container>
