@@ -53673,7 +53673,7 @@ function Footer() {
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "The Evidence Locker using Internet Computer is Future of Evidence storing systems.")),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__["default"], null,
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null,
-                            "Project @ ",
+                            "Project developed by Sarthik \u00A9 ",
                             year)))))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
@@ -53764,14 +53764,19 @@ function Header() {
     async function getNFTs() {
         const CURRENT_USER_ID = await _declarations_opend__WEBPACK_IMPORTED_MODULE_5__.opend.getCurrentUser();
         if (CURRENT_USER_ID != "2vxsx-fae") {
-            setLoggedIn(react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/logout" }, "Logout"));
+            setLoggedIn(react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "ButtonBase-root Button-root Button-text header-navButtons-3" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/logout" }, "Logout")));
             setAddEvidence(react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "ButtonBase-root Button-root Button-text header-navButtons-3" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/minter" }, "Add Evidence")));
             setMyEvidence(react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "ButtonBase-root Button-root Button-text header-navButtons-3" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/collection" }, "My Evidences")));
         }
         else {
-            setLoggedIn(react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/registration" }, "Register/Login"));
+            setLoggedIn(react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "ButtonBase-root Button-root Button-text header-navButtons-3" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/registration" }, "Register")),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "ButtonBase-root Button-root Button-text header-navButtons-3" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, { to: "/login" }, "Login"))));
             setAddEvidence();
             setMyEvidence();
         }
@@ -53794,7 +53799,7 @@ function Header() {
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", { className: "Typography-root header-logo-text" }, "Evidence Locker")),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "header-empty-6" }),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "header-space-8" }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "ButtonBase-root Button-root Button-text header-navButtons-3" }, loggedIn),
+                    loggedIn,
                     addEvidence,
                     myEvidence))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Switch, null,
@@ -54102,19 +54107,21 @@ function Login() {
             console.log("Failed Login");
         }
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'login' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { hidden: loaderHidden, className: "lds-ellipsis" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null)),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Login"),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", { action: "" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "text", name: "username", onChange: usernameOnchange, value: username }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "Password", name: "password", onChange: passwordOnchange, value: password }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: "makeStyles-title-99 Typography-h3 form-Typography-gutterBottom" }, "Login"),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", { className: "makeStyles-form-109 registration-form", action: "" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { for: "username" }, "Userame:"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "text", id: "username", name: "username", onChange: usernameOnchange, value: username }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { for: "fname" }, "Password:"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "Password", id: "Password", name: "password", onChange: passwordOnchange, value: password }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "button", onClick: handleSubmit, value: "Login" })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Not Registered? Click here for "),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { onClick: redirectToRegister }, "Registeration")));
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: 'form-button', onClick: redirectToRegister }, "Registeration")));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
@@ -54212,12 +54219,12 @@ function Minter() {
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", { className: "makeStyles-form-109", noValidate: "", autoComplete: "off" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "upload-container" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { ...register("image", { required: true }), className: "upload", type: "file", accept: "image/x-png,image/jpeg,image/gif,image/svg+xml,image/webp" })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", { className: "form-Typography-root makeStyles-subhead-102 form-Typography-subtitle1 form-Typography-gutterBottom" }, "Evidence title"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", { className: "form-Typography-root makeStyles-subhead-102 form-Typography-subtitle1 form-Typography-gutterBottom" }, "Evidence details"),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "form-FormControl-root form-TextField-root form-FormControl-marginNormal form-FormControl-fullWidth" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "form-InputBase-root form-OutlinedInput-root form-InputBase-fullWidth form-InputBase-formControl" },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { ...register("name", { required: true }), placeholder: "e.g. Evidence #14", type: "text", className: "form-InputBase-input form-OutlinedInput-input" }),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("fieldset", { className: "PrivateNotchedOutline-root-60 form-OutlinedInput-notchedOutline" }))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", { className: "form-Typography-root makeStyles-subhead-102 form-Typography-subtitle1 form-Typography-gutterBottom" }, "Case Name"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", { className: "form-Typography-root makeStyles-subhead-102 form-Typography-subtitle1 form-Typography-gutterBottom" }, "Case details"),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "form-FormControl-root form-TextField-root form-FormControl-marginNormal form-FormControl-fullWidth" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "form-InputBase-root form-OutlinedInput-root form-InputBase-fullWidth form-InputBase-formControl" },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { ...register("cName", { required: true }), placeholder: "e.g. Case #27", type: "text", className: "form-InputBase-input form-OutlinedInput-input" }),
@@ -54287,19 +54294,21 @@ function Registration() {
             console.log("Failed");
         }
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'registeration' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { hidden: loaderHidden, className: "lds-ellipsis" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null)),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: "makeStyles-title-99 Typography-h3 form-Typography-gutterBottom" }, "Registration"),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", { className: "makeStyles-form-109", noValidate: "", autoComplete: "off" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "text", name: "username", onChange: usernameOnchange, value: username }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "Password", name: "password", onChange: passwordOnchange, value: password }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", { className: "makeStyles-form-109 registration-form", noValidate: "", autoComplete: "off" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { for: "fname" }, "Set Userame:"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "text", id: "username", name: "username", onChange: usernameOnchange, value: username, placeholder: "username" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { for: "fname" }, "Set Password:"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "Password", name: "password", onChange: passwordOnchange, value: password, placeholder: "Password" }),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "button", onClick: handleSubmit, value: "Register" })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Already Registered? Click here for "),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { onClick: redirectToLogin }, "Login")));
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: 'form-button', onClick: redirectToLogin }, "Login")));
 }
 ;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Registration);

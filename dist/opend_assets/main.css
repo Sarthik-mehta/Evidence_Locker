@@ -1467,3 +1467,45 @@ margin: 100;
   background-size: 100% 100% 
 
 }
+
+/* Registration form */
+.registeration{
+  margin: 2em auto;
+}
+.registration-form{
+  margin: 2em auto;
+    text-align: left;
+    width: fit-content;
+}
+
+.registration-form input{
+  color: white;
+  background-color: rgb(206, 206, 206,0);
+  border-style: none;
+  padding:15px 5px;
+  margin:1em auto;
+  width: 500px;
+  display: block;
+  border: 0.05px solid grey;
+  border-radius: 4px;
+}
+
+.registration-form input[type=button]{
+  color: #5f64b5;
+  padding:10px 20px;
+  width: 200px;
+  display: block;
+  border-radius: 200px;
+  border-style: none;
+  background-color:#21223b;
+}
+
+.form-button{
+  border-style:none;
+  color: #5f64b5;
+  background-color:rgb(206, 206, 206,0);
+}
+
+.login{
+  margin: 2em auto;
+}
