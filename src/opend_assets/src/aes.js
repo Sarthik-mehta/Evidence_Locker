@@ -1,20 +1,18 @@
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr('myTotallySecretKey');
+var aes256 = require('aes256');
+var key = 'my passphrase';
 
 // encryption using AES256 algorithm
 export const encrypt = (data)=>{
     
-    const encrypted = cryptr.encrypt(data);
+    const encrypted = aes256.encrypt(key, data);
     return encrypted;
 }
 
 // decryption using AES256 algorithm 
 export  const decrypt = (data)=>{
    
-    const decrypted = cryptr.decrypt(data);
+    const decrypted = aes256.decrypt(key, data);
     return decrypted;
 }
 
-// const e = encrypt('ascva');
-// console.log(e);
-// console.log(decrypt(e));
+

@@ -5567,6 +5567,208 @@ function sha224(data) {
 
 /***/ }),
 
+/***/ "./node_modules/aes256/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/aes256/index.js ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var Buffer = __webpack_require__(/*! ./node_modules/buffer/index.js */ "./node_modules/buffer/index.js")["Buffer"];
+// Node.js core modules
+var crypto = __webpack_require__(/*! crypto */ "./node_modules/crypto-browserify/index.js");
+
+
+/**
+ * The encryption algorithm (cipher) type to be used.
+ * @type {String}
+ * @const
+ * @private
+ */
+var CIPHER_ALGORITHM = 'aes-256-ctr';
+
+
+//
+// Primary API
+//
+
+/**
+ * An API to allow for greatly simplified AES-256 encryption and decryption using a passphrase of
+ * any length plus a random Initialization Vector.
+ * @exports aes256
+ * @public
+ */
+var aes256 = {
+
+  /**
+   * Encrypt a clear-text message using AES-256 plus a random Initialization Vector.
+   * @param {String} key  A passphrase of any length to used to generate a symmetric session key.
+   * @param {String|Buffer} input  The clear-text message or buffer to be encrypted.
+   * @returns {String|Buffer} A custom-encrypted version of the input.
+   * @public
+   * @method
+   */
+  encrypt: function(key, input) {
+    if (typeof key !== 'string' || !key) {
+      throw new TypeError('Provided "key" must be a non-empty string');
+    }
+
+    var isString = typeof input === 'string';
+    var isBuffer = Buffer.isBuffer(input);
+    if (!(isString || isBuffer) || (isString && !input) || (isBuffer && !Buffer.byteLength(input))) {
+      throw new TypeError('Provided "input" must be a non-empty string or buffer');
+    }
+
+    var sha256 = crypto.createHash('sha256');
+    sha256.update(key);
+
+    // Initialization Vector
+    var iv = crypto.randomBytes(16);
+    var cipher = crypto.createCipheriv(CIPHER_ALGORITHM, sha256.digest(), iv);
+
+    var buffer = input;
+    if (isString) {
+      buffer = Buffer.from(input);
+    }
+
+    var ciphertext = cipher.update(buffer);
+    var encrypted = Buffer.concat([iv, ciphertext, cipher.final()]);
+
+    if (isString) {
+      encrypted = encrypted.toString('base64');
+    }
+
+    return encrypted;
+  },
+
+  /**
+   * Decrypt an encrypted message back to clear-text using AES-256 plus a random Initialization Vector.
+   * @param {String} key  A passphrase of any length to used to generate a symmetric session key.
+   * @param {String|Buffer} encrypted  The encrypted message to be decrypted.
+   * @returns {String|Buffer} The original plain-text message or buffer.
+   * @public
+   * @method
+   */
+  decrypt: function(key, encrypted) {
+    if (typeof key !== 'string' || !key) {
+      throw new TypeError('Provided "key" must be a non-empty string');
+    }
+
+    var isString = typeof encrypted === 'string';
+    var isBuffer = Buffer.isBuffer(encrypted);
+    if (!(isString || isBuffer) || (isString && !encrypted) || (isBuffer && !Buffer.byteLength(encrypted))) {
+      throw new TypeError('Provided "encrypted" must be a non-empty string or buffer');
+    }
+
+    var sha256 = crypto.createHash('sha256');
+    sha256.update(key);
+
+    var input = encrypted;
+    if (isString) {
+      input = Buffer.from(encrypted, 'base64');
+
+      if (input.length < 17) {
+        throw new TypeError('Provided "encrypted" must decrypt to a non-empty string or buffer');
+      }
+    } else {
+      if (Buffer.byteLength(encrypted) < 17) {
+        throw new TypeError('Provided "encrypted" must decrypt to a non-empty string or buffer');
+      }
+    }
+
+    // Initialization Vector
+    var iv = input.slice(0, 16);
+    var decipher = crypto.createDecipheriv(CIPHER_ALGORITHM, sha256.digest(), iv);
+
+    var ciphertext = input.slice(16);
+
+    var output;
+    if (isString) {
+      output = decipher.update(ciphertext) + decipher.final();
+    } else {
+      output = Buffer.concat([decipher.update(ciphertext), decipher.final()]);
+    }
+
+    return output;
+  }
+
+};
+
+
+
+
+/**
+ * Create a symmetric cipher with a given passphrase to then encrypt/decrypt data symmetrically.
+ * @param {String} key  A passphrase of any length to used to generate a symmetric session key.
+ * @public
+ * @constructor
+ */
+function AesCipher(key) {
+  if (typeof key !== 'string' || !key) {
+    throw new TypeError('Provided "key" must be a non-empty string');
+  }
+
+  /**
+   * A passphrase of any length to used to generate a symmetric session key.
+   * @member {String} key
+   * @readonly
+   */
+  Object.defineProperty(this, 'key', { value: key });
+
+}
+
+/**
+ * Encrypt a clear-text message using AES-256 plus a random Initialization Vector.
+ * @param {String} plaintext  The clear-text message to be encrypted.
+ * @returns {String} A custom-encrypted version of the input.
+ * @public
+ * @method
+ */
+AesCipher.prototype.encrypt = function(plaintext) {
+  return aes256.encrypt(this.key, plaintext);
+};
+
+/**
+ * Decrypt an encrypted message back to clear-text using AES-256 plus a random Initialization Vector.
+ * @param {String} encrypted  The encrypted message to be decrypted.
+ * @returns {String} The original plain-text message.
+ * @public
+ * @method
+ */
+AesCipher.prototype.decrypt = function(encrypted) {
+  return aes256.decrypt(this.key, encrypted);
+};
+
+
+
+
+//
+// API Extension
+//
+
+
+/**
+ * Create a symmetric cipher with a given passphrase to then encrypt/decrypt data symmetrically.
+ * @param {String} key  A passphrase of any length to used to generate a symmetric session key.
+ * @returns {AesCipher}
+ * @public
+ * @method
+ */
+aes256.createCipher = function(key) {
+  return new AesCipher(key);
+};
+
+
+
+
+//
+// Export the API
+//
+
+module.exports = aes256;
+
+
+/***/ }),
+
 /***/ "./node_modules/asn1.js/lib/asn1.js":
 /*!******************************************!*\
   !*** ./node_modules/asn1.js/lib/asn1.js ***!
@@ -30754,91 +30956,6 @@ exports.constants = {
   'POINT_CONVERSION_UNCOMPRESSED': 4,
   'POINT_CONVERSION_HYBRID': 6
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/cryptr/index.js":
-/*!**************************************!*\
-  !*** ./node_modules/cryptr/index.js ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-/* provided dependency */ var Buffer = __webpack_require__(/*! ./node_modules/buffer/index.js */ "./node_modules/buffer/index.js")["Buffer"];
-const crypto = __webpack_require__(/*! crypto */ "./node_modules/crypto-browserify/index.js");
-
-const algorithm = 'aes-256-gcm';
-const ivLength = 16;
-const tagLength = 16;
-const defaultSaltLength = 64;
-const defaultPbkdf2Iterations = 100000;
-
-function Cryptr(secret, options) {
-    if (!secret || typeof secret !== 'string') {
-        throw new Error('Cryptr: secret must be a non-0-length string');
-    }
-
-    let saltLength = defaultSaltLength;
-    let pbkdf2Iterations = defaultPbkdf2Iterations;
-
-    if (options) {
-        if (options.pbkdf2Iterations) {
-            pbkdf2Iterations = options.pbkdf2Iterations;
-        }
-
-        if (options.saltLength) {
-            saltLength = options.saltLength;
-        }
-    }
-
-    const tagPosition = saltLength + ivLength;
-    const encryptedPosition = tagPosition + tagLength;
-
-    function getKey(salt) {
-        return crypto.pbkdf2Sync(secret, salt, pbkdf2Iterations, 32, 'sha512');
-    }
-
-    this.encrypt = function encrypt(value) {
-        if (value == null) {
-            throw new Error('value must not be null or undefined');
-        }
-
-        const iv = crypto.randomBytes(ivLength);
-        const salt = crypto.randomBytes(saltLength);
-
-        const key = getKey(salt);
-
-        const cipher = crypto.createCipheriv(algorithm, key, iv);
-        const encrypted = Buffer.concat([cipher.update(String(value), 'utf8'), cipher.final()]);
-
-        const tag = cipher.getAuthTag();
-
-        return Buffer.concat([salt, iv, tag, encrypted]).toString('hex');
-    };
-
-    this.decrypt = function decrypt(value) {
-        if (value == null) {
-            throw new Error('value must not be null or undefined');
-        }
-
-        const stringValue = Buffer.from(String(value), 'hex');
-
-        const salt = stringValue.slice(0, saltLength);
-        const iv = stringValue.slice(saltLength, tagPosition);
-        const tag = stringValue.slice(tagPosition, encryptedPosition);
-        const encrypted = stringValue.slice(encryptedPosition);
-
-        const key = getKey(salt);
-
-        const decipher = crypto.createDecipheriv(algorithm, key, iv);
-
-        decipher.setAuthTag(tag);
-
-        return decipher.update(encrypted) + decipher.final('utf8');
-    };
-}
-
-module.exports = Cryptr;
 
 
 /***/ }),
@@ -83435,20 +83552,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "decrypt": () => (/* binding */ decrypt),
 /* harmony export */   "encrypt": () => (/* binding */ encrypt)
 /* harmony export */ });
-const Cryptr = __webpack_require__(/*! cryptr */ "./node_modules/cryptr/index.js");
-const cryptr = new Cryptr('myTotallySecretKey');
+var aes256 = __webpack_require__(/*! aes256 */ "./node_modules/aes256/index.js");
+var key = 'my passphrase';
 
 // encryption using AES256 algorithm
 const encrypt = (data)=>{
     
-    const encrypted = cryptr.encrypt(data);
+    const encrypted = aes256.encrypt(key, data);
     return encrypted;
 }
 
 // decryption using AES256 algorithm 
 const decrypt = (data)=>{
    
-    const decrypted = cryptr.decrypt(data);
+    const decrypted = aes256.decrypt(key, data);
     return decrypted;
 }
 
