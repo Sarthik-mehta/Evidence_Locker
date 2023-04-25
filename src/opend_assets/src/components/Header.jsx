@@ -67,6 +67,7 @@ function Header() {
     }
     const userNFTIds = await opend.getOwnedNFTs(CURRENT_USER_ID);
     console.log(userNFTIds);
+    
     setOwnedGallery(<Gallery title="My Evidences" ids = {userNFTIds}/>);
   };
 

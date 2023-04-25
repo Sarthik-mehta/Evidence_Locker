@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import {Actor,HttpAgent} from "@dfinity/agent";
 import {idlFactory} from "../../../declarations/nft";
 import { Principal } from "@dfinity/principal";
+import { decrypt } from "../aes";
 
 function Item(props) {
 
@@ -25,8 +26,12 @@ function Item(props) {
     const caseName = await NFTActor.getCaseName();
     const owner = await NFTActor.getOwner();
     const imageData = await NFTActor.getAsset();
+    const imageDataString = await NFTActor.getAssetString();
+    // const imageDataArray = await  imageDataString.split(',');
+    // const img =  imageDataArray.map(Number);
+    const decryptedImageData =await decrypt(imageDataString).split(',').map(Number);
 
-    const imageContent = new Uint8Array(imageData);
+    const imageContent = new Uint8Array(decryptedImageData);
     const image = URL.createObjectURL(new Blob([imageContent.buffer],{type:"image/png"}));
 
     setOwner(owner.toText());

@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { opend } from "../../../declarations/opend";
 import Item from "./Item";
 
+import { encrypt,decrypt } from "../aes";
+
+
 function Minter() {
 
   const {register,handleSubmit} = useForm();
@@ -16,8 +19,12 @@ function Minter() {
     const cname = data.cName;
     const imageArray = await image.arrayBuffer();
     const imageByteData = [...new Uint8Array(imageArray)];
+    const imageByteDataString = imageByteData.toString();
+    const encryptedImageString = await encrypt(imageByteDataString);
 
-    let newNFTID = await opend.mint(imageByteData, name,cname);
+    console.log("from minter",encryptedImageString);
+
+    let newNFTID = await opend.mint(imageByteData,encryptedImageString, name,cname);
     console.log(newNFTID.toText());
     setNftPrincipal(newNFTID);
     setLoaderHidden(true);

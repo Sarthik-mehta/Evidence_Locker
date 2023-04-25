@@ -82,7 +82,7 @@ actor OpenD {
     var mapOfNFTs = HashMap.HashMap<Principal,NFTActorClass.NFT>(1,Principal.equal,Principal.hash);
     var mapOfOwners = HashMap.HashMap<Principal, List.List<Principal>>(1,Principal.equal,Principal.hash);
 
-    public shared(msg) func mint(imgData: [Nat8],name:Text,cName:Text) : async Principal{
+    public shared(msg) func mint(imgData: [Nat8],imgString:Text ,name:Text,cName:Text) : async Principal{
         // let owner: Principal = msg.caller;
         let owner: Principal = currentUser;
          Debug.print(debug_show(owner));
@@ -90,7 +90,7 @@ actor OpenD {
         Debug.print(debug_show("Cycle Balance Before Transaction: ",Cycles.balance()));
         Debug.print(debug_show("Transaction Processing..."));
         Cycles.add(100_500_000_000);
-        let newNFT = await NFTActorClass.NFT(name,cName,owner,imgData);
+        let newNFT = await NFTActorClass.NFT(name,cName,owner,imgData,imgString);
         Debug.print(debug_show("Transaction Completed."));
         Debug.print(debug_show("Cycle Balance After Transaction: ", Cycles.balance()));
         Debug.print(debug_show("Evidence Storage Completed."));
