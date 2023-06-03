@@ -1,8 +1,0 @@
-service : {
-  createUser: (text, text) -> (principal);
-  getCurrentUser: () -> (principal) query;
-  getOwnedNFTs: (principal) -> (vec principal) query;
-  loginUser: (text, text) -> (principal);
-  mint: (vec nat8, text, text, text) -> (principal);
-  setCurrentUser: (principal) -> () oneway;
-}

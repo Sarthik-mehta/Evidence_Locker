@@ -5,7 +5,7 @@
 
 
 # # dfx temporary files
-# #.dfx/
+.dfx/
 
 # # frontend code
 # node_modules/
