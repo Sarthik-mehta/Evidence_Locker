@@ -4,7 +4,6 @@ import NFTActorClass "../NFT/nft";
 import UserActorClass "../User/user";
 import Cycles "mo:base/ExperimentalCycles";
 import HashMap "mo:base/HashMap";
-// import NFTActorClass "../nft/nft";
 import List "mo:base/List";
 import User "../User/user";
 import Text "mo:base/Text";
@@ -79,13 +78,23 @@ actor OpenD {
         };
 
      };
+  
+    public shared func getUsers(): async [Text]{
+        var users : List.List<Text> = List.nil<Text>();
+        for  (user in mapOfUsers.keys()){  
+            users := List.push(user, users);
+        };
+        return List.toArray(users);
+    };
+    
     var mapOfNFTs = HashMap.HashMap<Principal,NFTActorClass.NFT>(1,Principal.equal,Principal.hash);
     var mapOfOwners = HashMap.HashMap<Principal, List.List<Principal>>(1,Principal.equal,Principal.hash);
+    var mapOfSharedOwners = HashMap.HashMap<Principal, List.List<Principal>>(1,Principal.equal,Principal.hash);
 
-    public shared(msg) func mint(imgData: [Nat8],imgString:Text ,name:Text,cName:Text) : async Principal{
+    public shared(msg) func mint(imgData: [Nat8],imgString:Text ,name:Text,cName:Text, sharedUsers: [Text]) : async Principal{
         // let owner: Principal = msg.caller;
         let owner: Principal = currentUser;
-         Debug.print(debug_show(owner));
+        Debug.print(debug_show(owner));
         Debug.print(debug_show("Evidence Storage In Progress..."));
         Debug.print(debug_show("Cycle Balance Before Transaction: ",Cycles.balance()));
         Debug.print(debug_show("Transaction Processing..."));
@@ -99,6 +108,21 @@ actor OpenD {
 
         mapOfNFTs.put(newNFTPrincipal,newNFT);
         addToOwnershipMap(owner,newNFTPrincipal);
+
+        for(i in sharedUsers.keys()){
+            let userData = mapOfUsers.get(sharedUsers[i]);
+
+            switch(userData){
+                case null {
+                    Debug.print(debug_show("No data of shared user found"));
+                };
+                case (?userData) {
+                    addToSharedOwnershipMap(userData.userPrincipal, newNFTPrincipal);
+                };
+            }
+            
+        };
+
         return newNFTPrincipal;
     };
 
@@ -112,8 +136,27 @@ actor OpenD {
         mapOfOwners.put(owner,ownedNFTs);
     };
 
+    private func addToSharedOwnershipMap(owner: Principal,nftId: Principal){
+        var ownedNFTs : List.List<Principal> = switch(mapOfSharedOwners.get(owner)){
+            case null List.nil<Principal>();
+            case (?result) result;
+        };
+
+        ownedNFTs := List.push(nftId,ownedNFTs);
+        mapOfSharedOwners.put(owner,ownedNFTs);
+    };
+
     public query func getOwnedNFTs(user:Principal): async [Principal]{
          var ownedNFTs : List.List<Principal> = switch(mapOfOwners.get(user)){
+            case null List.nil<Principal>();
+            case (?result) result;
+        };
+
+        return List.toArray(ownedNFTs);
+    };
+
+    public query func getSharedNFTs(user:Principal): async [Principal]{
+         var ownedNFTs : List.List<Principal> = switch(mapOfSharedOwners.get(user)){
             case null List.nil<Principal>();
             case (?result) result;
         };
