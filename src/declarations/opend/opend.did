@@ -2,7 +2,9 @@ service : {
   createUser: (text, text) -> (principal);
   getCurrentUser: () -> (principal) query;
   getOwnedNFTs: (principal) -> (vec principal) query;
+  getSharedNFTs: (principal) -> (vec principal) query;
+  getUsers: () -> (vec text);
   loginUser: (text, text) -> (principal);
-  mint: (vec nat8, text, text, text) -> (principal);
+  mint: (vec nat8, text, text, text, vec text) -> (principal);
   setCurrentUser: (principal) -> () oneway;
 }
