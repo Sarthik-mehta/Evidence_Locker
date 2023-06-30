@@ -1,136 +1,142 @@
-/* ------------------------services section-------------------------- */
 * {
     box-sizing: border-box;
+    
   }
   
   body {
     font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  /* Float four columns side by side */
-  .column {
-    float: left;
-    width: 33%;
-    padding: 0 10px;
-  }
-  
-  /* Remove extra left and right margins, due to padding in columns */
-  .row {margin: 0 -5px;}
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Style the counter cards */
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding: 16px;
-    text-align: center;
-    background-color: #ffffff;
-  }
-  
-  /* Responsive columns - one column layout (vertical) on small screens */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     }
-  }
-  
-  /*------------------------How Project Works section----------------------------- */
-  
-  .HowProjectWorksBgImg{
-        background-image:url("../img//how-project-works-bg-img.png");
-        width:100%;
-        justify-self:auto;
-        height: 90vh;
-        background-repeat:no-repeat; 
-        background-size: 100% 100%
-    
+  h1,h2,h3,h4,h5,h6{
+    color: #5b89c6;
+    font-size: large;
+    /* text-shadow: 0.5px 1px ; */
 
   }
+  p{
+    color: #5b89c6;
+  }
 
-  /*  right text */
-.top-right {
+/*-------------------- get started section ------------------------*/
+  .all-btn{
     position: absolute;
-    margin: 15%;
-    margin-left: 55%;
-    right: 6px;
-  }
+width: 160px;
+height: 40px;
+left: 200px;
 
-  .column2 {
-    float: left;
-    width: 50%;
-    padding: 0 10px;
+background: linear-gradient(180deg, #0F0029 0%, rgba(120, 223, 143, 0.857083) 2.6%, rgba(34, 149, 255, 0.89) 100%);
+border-radius: 30px;
+
   }
-  
-  /* Remove extra left and right margins, due to padding in columns */
-  .row2 {margin: 0 -5px;}
-  
-  /* Clear floats after the columns */
-  .row2:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Style the counter cards */
-  .card2 {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding: 16px;
-    text-align: center;
-    background-color: #0f175b
-    ;
-  }
-  
-  /* Responsive columns - one column layout (vertical) on small screens */
-  @media screen and (max-width: 600px) {
-    .column2 {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-} 
+.get-started-txt{
+  position: absolute;
+font-family: 'Source Sans 3';
+font-style: normal;
+color: #FFFFFF;
+
+}
 
 
-/* background image e-locekr */
-.e-locker-project{
-    background-image:url("../img/E-locker-project.png");
-    width:100%;
-    justify-self:auto;
-    height: 90vh;
-    background-repeat:no-repeat; 
-    background-size: 100% 100% ;
-    margin-top:-10%;
+ /*------------------------- services section----------------------- */
+
+
+
+.column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+ 
+/* ------------------------------  How project works  ------------------------------------------ */
+
+/* Top left text */
+.top-left-bg {
+  position: absolute;
+  
 }
 
 .bottom-image-text{
   margin: 100;
 }
 
-/* Top left text */
-.top-left-bg {
-    position: absolute;
-    margin: 5%;
-  }
 
+/* -----------------------------------Benefits------------------------------------------ */
+.table-benefits{
+  width: 80%;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 70px 40px !important;
+  border-collapse:separate !important;
 
-/* ------------------------benefits section-------------------------------- */
-/* tbd */
-
-
-
-/* Bottom Image */
-.Bottom-Image{
-    background-image:url("../img/Collaborative-Contract-Bottom-Img.png");
-    width:100%;
-    justify-self:auto;
-    height: 90vh;
-    background-repeat:no-repeat; 
-    background-size: 100% 100% 
- 
 }
+
+
+.td-benefits{
+  /* background-image: linear-gradient(to right bottom, #ffffff, #f7f7f7);  width: fit-content; */
+  padding: 20px;
+background: #FFFFFF;
+border-radius: 40px; 
+
+
+}
+.card-benefits {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #ffffff;
+}
+    
+
+
+/* ---------------------contact us section--------------------------------- */
+
+
+.contactUs-input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid rgb(3, 48, 15);
+}
+/* .container{
+overflow: auto;
+}
+.contactUs-left{
+float: left;
+width: 50%;
+}
+contactUs-right{
+  float: right;
+  width: 50%;
+} */
+

@@ -39,23 +39,23 @@ function Registration() {
   };
 
     return (
-      <div className='registeration'>
+      <div className='registeration'  style={{backgroundColor:"rgb(214, 239, 255)",margin:"0em", minHeight: "100vh" }}>
         <div hidden= {loaderHidden} className="lds-ellipsis">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
-        <h1 className="makeStyles-title-99 Typography-h3 form-Typography-gutterBottom">Registration</h1>
+        <h1 className="makeStyles-title-99 Typography-h3 form-Typography-gutterBottom" style={{fontFamily: 'Roboto'}}>Registration</h1>
       <form className="makeStyles-form-109 registration-form" noValidate="" autoComplete="off">
-          <label for="fname">Set Userame:</label>
-          <input type="text" id="username" name="username" onChange={usernameOnchange} value={username} placeholder="username"/>
-          <label for="fname">Set Password:</label>
-          <input type="Password" name="password" onChange={passwordOnchange} value={password} placeholder="Password"/>
-          <input type="button"  onClick={handleSubmit} value="Register"/>
+          <label for="fname" style={{color:"black"}}>Set Userame:</label>
+          <input type="text" id="username" name="username" onChange={usernameOnchange} required value={username} placeholder="Username" style={{color:"black"}} />
+          <label for="fname" style={{color:"black"}}>Set Password:</label>
+          <input type="Password" name="password" onChange={passwordOnchange} required value={password} placeholder="Password" style={{color:"black"}}/>
+          <input type="button"  onClick={handleSubmit} value="Register" style={{color:"white"}}/>
       </form>
-      <h4>Already Registered? Click here for </h4>
-      <button className='form-button' onClick={redirectToLogin}>Login</button>
+      <h4>Already Registered?  </h4>
+      <button className='form-button' onClick={redirectToLogin}>Click here for Login</button>
       </div>
     )
 };

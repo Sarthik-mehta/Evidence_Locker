@@ -1,52 +1,132 @@
+// import React from "react";
+// import '../assets/css/home.css';
+// import lightBulb from '../assets/img/light-bulb.png';
+// import mission from '../assets/img/mission.png';
+// import vision from '../assets/img/vision.png';
+// import law from '../assets/img/law.png';
+// import fingerprint from '../assets/img/fingerprint.png';
+// import benefitsImage from '../assets/img/Benefits.png';
+// import footerLocation from '../assets/img/footer-location.png'
+// import footerCall from '../assets/img/footer-call.png'
+// import Nav from 'react-bootstrap/Nav';
 import React from "react";
 import '../assets/css/home.css';
+import navbarImg from '../assets/img/navbar-bg-img.png';
+
+import howProjectworks from '../assets/img/how-project-works-bg-img.png';
+import eLockerProject from '../assets/img/E-locker-project.png';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import lightBulb from '../assets/img/light-bulb.png';
 import mission from '../assets/img/mission.png';
 import vision from '../assets/img/vision.png';
 import law from '../assets/img/law.png';
+import BenefitCard from "./BenefitCard";
 import fingerprint from '../assets/img/fingerprint.png';
 import benefitsImage from '../assets/img/Benefits.png';
-import footerLocation from '../assets/img/footer-location.png'
-import footerCall from '../assets/img/footer-call.png'
-import Nav from 'react-bootstrap/Nav';
+import contactUsLocation from '../assets/img/footer-location.png'
+import contactUsCall from '../assets/img/footer-call.png'
+import collaborative from '../assets/img/Collaborative-Contract-Bottom-Img.png'
+import contactUsBgImg from "../assets/img/Footer-bg-img2.png";
+import contactUsWorldImg from "../assets/img/Footer-bg-img1.png"
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import Minter from "./Minter";
 
+import BenefitClock from '../assets/img/benefit-clock.png';
+import BenefitContact from '../assets/img/contact.png';
+import BenefitReward from '../assets/img/euro-currency-symbol.png';
+import BenefitCalendar from '../assets/img/calendar.png';
+import BenefitAuthentication from '../assets/img/touch-id.png';
+import BenefitVerification from '../assets/img/user.png';
+import BenefitTwitter from '../assets/img/twitter.png';
+import BenefitSecurity from '../assets/img/shield.png';
+import BenefitFacebook from '../assets/img/facebook.png';
+import BenefitTelegram from '../assets/img/telegram.png';
+import BenefitWechat from '../assets/img/wechat.png';
+import BenefitUpToDate from '../assets/img/changes.png';
 
 
 class Home extends React.Component {
     render() {
 
         return (
-            <div className="home">
+            <div className="home" style={{ backgroundColor: "white"}}>
+
+                {/* ------------------------------------------get Started----------------------------------------- */}
+
+                <div className="get-started"
+                    style={{
+                        backgroundImage: `url(${navbarImg})`,
+                        width: "100%", height: "80vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+                        backgroundSize: "100% 100%", marginTop: "", position: "relative"
+                    }} >
+                    <div className="get-started-txt"
+                        style={{
+                            float: "left", paddingTop: "100px", paddingLeft: "5%", position: "absolute",
+                            left: "0", top: "0"
+                        }}>
+                        <h1>E-Locker</h1>
+                        <small style={{ color: "white" }}>A digital blockchain based evidence locker</small>
+                        <p style={{ color: "white" }}> Evidence Lockers are durable, highly secure with evidence <br></br>tracking technology for evidence storage</p>
+                        <Link to="/login"><button className="all-btn">Get Started</button></Link>
+                    </div>
+                </div>
+
+
+                {/* -----------------------------------------Services-----------------------------------------------      */}
 
                 <div className="Services">
-                    <h1 style={styles.headingTextH1}>Services</h1>
-                    <h4 style={styles.headingTextH4}>Protect the authenticity of evidences with us</h4>
+                    <h1 >Services</h1>
+                    <h4 >Protect the authenticity of evidences with us</h4>
 
 
-                    <div class="row">
-                        <div class="column">
-                            <div class="card">
-                                <img src={lightBulb} alt="light-bulb" style={styles.cardImg}></img>
-                                <h4 style={styles.cardHeadingH4}>The E-locker Project</h4>
-                                <p style={styles.cardParagraph}>Digital Evidence File Locker with
+                    <div className="row">
+                        <div className="column" style={{ width: "33%" }}>
+                            <div className="card">
+                                <img src={lightBulb} alt="light-bulb" style={{
+                                    display: 'block',
+                                    marginLeft: ' auto',
+                                    marginRight: 'auto',
+                                    width: '200px',
+                                    height: '200px'
+
+                                }}></img>
+                                <h4 style={{color:"White"}} >The E-locker Project</h4>
+                                <p style={{ color: "#5b89c6" }}>Digital Evidence File Locker with
                                     real time monitoring and control.
                                 </p>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="card">
-                                <img src={mission} alt="mission" style={styles.cardImg}></img>
-                                <h4 style={styles.cardHeadingH4}>Our mission</h4>
-                                <p style={styles.cardParagraph}>Our mission is to provide
+                        <div className="column" style={{ width: "33%" }}>
+                            <div className="card">
+                                <img src={mission} alt="mission" style={{
+                                    display: 'block',
+                                    marginLeft: ' auto',
+                                    marginRight: 'auto',
+                                    width: '200px',
+                                    height: '200px'
+
+
+                                }}></img>
+                                <h4 >Our mission</h4>
+                                <p style={{ color: "#5b89c6" }}>Our mission is to provide
                                     Evidence locker based on blockchain.</p>
 
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="card">
-                                <img src={vision} alt="vision" style={styles.cardImg}></img>
-                                <h4 style={styles.cardHeadingH4}>our vision</h4>
-                                <p style={styles.cardParagraph}>To provide a fast, secured and easily managegable
+                        <div className="column" style={{ width: "33%" }}>
+                            <div className="card">
+                                <img src={vision} alt="vision" style={{
+                                    display: 'block',
+                                    marginLeft: ' auto',
+                                    marginRight: 'auto',
+                                    width: '200px',
+                                    height: '200px'
+
+
+                                }}></img>
+                                <h4 >our vision</h4>
+                                <p style={{ color: "#5b89c6" }}>To provide a fast, secured and easily managegable
                                     online e-locker.</p>
 
 
@@ -57,182 +137,185 @@ class Home extends React.Component {
                 </div>
 
 
-                <div class="HowProjectWorksBgImg">
+                {/* --------------------------------------- How projecct works------------------------------------------- */}
 
-                    <div class="top-right">
+                <div className="HowProjectWorksBgImg " style={{
+                    backgroundImage: `url(${howProjectworks})`,
+                    width: "100%", height: "80vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%", marginTop: "", position: "relative"
+                }}
+                >
+
+                    <div className="top-right">
                         <h3>How Our Project Works</h3>
-                        <p>our project will be implemented using a decentralized network called Internet Computer developed
+                        <p style={{ color: "#5b89c6" }}>our project will be implemented using a decentralized network called Internet Computer developed
                             by dfinity and Motoko to store the digital evidence with a tamper-proof facility.
                             Unlike other blockchains, on Internet computer and Motoko 100 percent data will be stored on blockchain
                             itself.
 
                         </p>
-                        {/*------------------------------------------- To be updated ------------------------------------------------*/}
-                        <div class="row2">
-                            <div class="column2">
-                                <div class="card2">
-                                    <img src={fingerprint} alt="fingerprint" style={styles.fingerprintImg}></img>
-                                    <small style={styles.row2Text}>Store Evidence </small>
-                                    <p style={styles.row2Text}><a href="/upload-evidence">Click here to proceed</a></p>
+                        <div className="row2">
+                            <div className="column2">
+                                <div className="card2">
+                                    <img src={fingerprint} style={{ height: "40px", width: "40px" }} alt="fingerprint" ></img>
+                                    <small >Store Evidence </small>
+                                    <p>
+                                        <Link to="/minter">
+                                        <b style={{color:"white"}}> Click here to proceed</b>
+                                        </Link>
+                                    </p>
+
                                 </div>
                             </div>
-                            <div class="column2">
-                                <div class="card2">
-                                    <img src={law} alt="law" style={styles.lawImg}></img>
-                                    <small style={styles.row2Text}>Show Evidence</small>
-                                    <p style={styles.row2Text}><a href="/view-evidence">Click here to proceed</a></p>
+                            <div className="column2">
+                                <div className="card2">
+                                    <img src={law} style={{ height: "40px", width: "40px" }} alt="law" ></img>
+                                    <small >Show Evidence</small>
+                                    <p>
+                                        <Link to="/collection">
+                                        <b style={{color:"white"}}>Click here to proceed</b>
+                                        </Link>
+                                    </p>
                                 </div>
                             </div>
 
                         </div>
-                        {/*------------------------------------------- ------------------- ------------------------------------------------*/}
 
                     </div>
                 </div>
 
 
 
-                <div class="e-locker-project">
-                    <div class="top-left-bg">
-                        <h4 style={styles.cardHeadingH4}>The E-Locker Project</h4>
-                        <p >Lorem ipsum dolor sit amet, consectetur  adipiscing elit,
-                            sed do eiusmod tempor<br></br> incididunt ut labore et dolore
-                            magna aliqua. Ut enim ad minim veniam, quis nostrud<br></br>
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure<br></br> dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            <br></br>Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui <br></br>officia deserunt mollit anim id est laborum
-
+                <div className="e-locker-project" style={{
+                    backgroundImage: `url(${eLockerProject})`,
+                    width: "100%", height: "50vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%", marginTop: "0px", position: "relative"
+                }}
+                >
+                    <div className="top-left-bg">
+                        <h4 >The E-Locker Project</h4>
+                        <p style={{ color: "#5b89c6" }}>Evidence Locker was designed and built by digital forensic experts<br></br> for forensic professionals,
+                            law enforcement agencies and legal <br></br>departments to simplify the process of acquiring and <br></br>
+                            preserving data that resides in the blockchain in a secure forensically sound manner.
                         </p>
                     </div>
 
 
                 </div>
 
+                {/* ---------------------------------------------Benefits---------------------------------------------- */}
+                <div className="">
+                    <h1 >Benefits</h1>
+                    <table className="table-benefits">
+                        <tr>
+                            <td className="card-benefits td-benefits " ><BenefitCard img={BenefitClock} description="Get started in 30 seconds" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitContact} description="Two people account" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitReward} description="Rewards Daily" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitCalendar} description="Easy Transfer" /></td>
+                        </tr>
+                        <tr>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitAuthentication} description="Authentication" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitVerification} description="Verification" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitTwitter} description="Twitter Account" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitSecurity} description="Security" /></td>
+                        </tr>
+                        <tr>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitFacebook} description="Facebook Account" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitTelegram} description="Telegram Account" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitWechat} description="WeChat Account" /></td>
+                            <td className="card-benefits td-benefits"><BenefitCard img={BenefitUpToDate} description="Up-To-Date Security" /></td>
+                        </tr>
 
-                {/*------------------------------------------- TBD -------------------------------------------------*/}
-                <div class="Benefits">
-                    <h1 style={styles.headingTextH1}>Benefits</h1>
-                    <img class="BenefitsImg" style={styles.benefitsImg} src={benefitsImage} alt="benefitsImg"></img>
+
+                    </table>
 
                 </div>
 
-                {/* --------------------------------------------------------------------------------------------------- */}
+                {/* -------------------------------- Bottom image section--------------------------------------- */}
 
+                <div className="Bottom-Image" style={{
+                    backgroundImage: `url(${collaborative})`,
+                    width: "100%", height: "80vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%", marginTop: "0px", position: "relative"
+                }} >
 
-                <div class="Bottom-Image">
-                    <h4 style={styles.headingTextH3} class="bottom-image-text">
-                        <br></br><br></br><br></br><br></br>The combination and Integration of Internet Computer, Motoko and Blockchain
-                        Technology produce impressive potential as these
-                        trajectories are technologically merged. 
+                    <h4 className="bottom-image-text" style={{ color: "white" }}>
+                        <br></br>The combination and Integration of Internet Computer, <br></br>Motoko and Blockchain
+                        Technology produce impressive potential <br></br>as these
+                        trajectories are technologically merged.
                     </h4>
                 </div>
 
 
-                {/* footer */}
-                <div class="footer">
-                <div class="container footer-img2 ">
-                    <div class="top-right-footer footer-table">
+                {/*-------------------------------------- contact us--------------------------------------------- */}
+                <div className="contactUsSection" style={{
+                    backgroundImage: `url(${contactUsBgImg})`,
+                    width: "100%", height: "80vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+                    backgroundSize: "100% 100%", marginTop: "0px", position: "relative"
+                }} >
 
-                        <table class="table1" >
-                            <tr class="tableRow1">
-                                <th><h3 style={styles.h3Heading}>Get In Touch</h3></th>
-                            </tr>
-                            <tr>
-                                <td class="tableData1">
-                                    <img src={footerLocation} alt="footer-location" style={styles.HomefooterLocationImg}></img>
-                                    <p class="footerText">C-1/901, New Delhi-110094</p>
-                                </td><br></br>
-                                
 
-                            </tr>
-                            <tr>
-                            <td class="tableData1">
-                                    <img src={footerCall} alt="footer-call" style={styles.HomefooterLocationImg}></img>
+                    <div className="contactUs">
+
+
+
+
+                        <div className="contactUs-world-img container" style={{
+                            backgroundImage: `url(${contactUsWorldImg})`,
+                            width: "80%", height: "80vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+                            backgroundSize: "80% ", marginLeft: "20%", marginRight: "00%", position: "relative", marginTop: "2%"
+                        }} >
+
+                            <div className="contactUs-left">
+                                <p></p>
+                            </div>
+
+                            <div className="contactUs-right">
+                                <h3 style={{ marginLeft: "15%", padding: "2%" }} >Get In Touch</h3>
+
+                                <div style={{ marginLeft: "15%" }}>
+                                    <img src={contactUsLocation} alt="contactUs-location" style={{
+                                        width: "40px", height: "40px",
+                                    }} ></img>
+                                    <p className="contactUsText" >C-1/901, New Delhi-110094</p>
+
+                                    <img src={contactUsCall} alt="contactUs-call" style={{
+                                        width: "40px", height: "40px",
+                                    }} ></img>
                                     <p>Support@elocker.com </p>
-                                </td>
-                            </tr>
-                           
 
+                                </div>
 
-                        </table>
-                        <br></br><br></br>
+                                <div>
+                                    <h2 style={{ marginLeft: "15%", marginTop: "20px" }}><b>Have a question?</b></h2>
+                                    <form id="contactUsForm">
+                                      
+                                        <table style={{ marginLeft: "43%" }}>
+                                            <tr>
+                                                <td> <input id="name" placeholder="Name" className="contactUs-input"></input> </td>
+                                                <td>  <input id="emain" placeholder="Emain" className="contactUs-input"></input> </td>
+                                            </tr>
+                                            <tr ><td ><input id="message" placeholder="Message" className="contactUs-input"></input></td></tr>
+                                            <tr><td ><button className="all-btn" style={{ marginLeft: "35%" }}>Send</button></td></tr>
+                                        </table>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
-
-
-
                 </div>
 
-             
 
             </div>
 
 
-            </div>
         );
     }
 
 }
 
-const styles = {
-    headingTextH1: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-        margin: 15
-    },
-    headingTextH4: {
-        textAlign: 'center',
-        color: 'grey'
-    },
-    cardImg: {
-
-        // height:200,
-        // width:200,
-
-        display: 'block',
-        marginLeft: ' auto',
-        marginRight: 'auto',
-        width: '50%'
-
-
-    },
-    cardHeadingH4: {
-        marginTop: 10,
-        fontWeight: 'bold'
-
-    },
-    cardParagraph: {
-        color: "black"
-    },
-    fingerprintImg: {
-        height: 30,
-        width: 30,
-    },
-    lawImg: {
-        height: 30,
-        width: 30
-    },
-    row2Text: {
-        color: 'white',
-        fontSize: 10
-    },
-    headingTextH3:{
-        textAlign: 'center',
-        color:'white',
-        marginLeft:'30%' ,
-        marginRight:'30%',
-    },
-    benefitsImg:{
-        width:'100%'
-    },
-    h3Heading: {
-        fontWeight: 'bold'
-    },
-    HomefooterLocationImg: {
-        height: 50,
-        width: 50
-    },
-}
 
 export default Home;

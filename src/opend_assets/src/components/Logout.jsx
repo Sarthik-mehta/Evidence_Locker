@@ -2,6 +2,8 @@ import React, { Component, useEffect } from 'react';
 import { opend } from "../../../declarations/opend";
 import { useHistory } from 'react-router-dom';
 import { Principal } from "@dfinity/principal";
+import addEvidenceBgImg2 from '../assets/img/add-evidence-bg-img2.jpg';
+
 
 function Logout(){
   const history = useHistory();
@@ -17,7 +19,10 @@ function Logout(){
   }, []);
 
     return (
-      <div>
+      <div style={{minHeight:"100vh",minHeight:"100vh",
+      backgroundImage: `url(${addEvidenceBgImg2})`,
+      width: "100%", height: "100vh", justifySelf: "auto", backgroundRepeat: "no-repeat",
+      backgroundSize: "100% 100%", marginTop: "", position: "relative"}}>
         <div className="lds-ellipsis">
         <div></div>
         <div></div>

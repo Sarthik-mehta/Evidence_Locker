@@ -11,7 +11,7 @@ function App() {
   //const NFTID = "rrkah-fqaaa-aaaaa-aaaaq-cai";
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:'black'}}>
       <Header />
       {/* <Minter /> */}
       {/* <Item id = {NFTID}/> */}
