@@ -8,7 +8,7 @@ import List "mo:base/List";
 import User "../User/user";
 import Text "mo:base/Text";
 
-actor OpenD {
+actor Locker {
 
     var currentUser: Principal = Principal.fromText("2vxsx-fae");
 

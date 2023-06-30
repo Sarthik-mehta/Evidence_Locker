@@ -1,16 +1,16 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
 
 // Imports and re-exports candid interface
-import { idlFactory } from './opend.did.js';
-export { idlFactory } from './opend.did.js';
+import { idlFactory } from './eLocker.did.js';
+export { idlFactory } from './eLocker.did.js';
 // CANISTER_ID is replaced by webpack based on node environment
-export const canisterId = process.env.OPEND_CANISTER_ID;
+export const canisterId = process.env.ELOCKER_CANISTER_ID;
 
 /**
  * 
  * @param {string | import("@dfinity/principal").Principal} canisterId Canister ID of Agent
  * @param {{agentOptions?: import("@dfinity/agent").HttpAgentOptions; actorOptions?: import("@dfinity/agent").ActorConfig}} [options]
- * @return {import("@dfinity/agent").ActorSubclass<import("./opend.did.js")._SERVICE>}
+ * @return {import("@dfinity/agent").ActorSubclass<import("./eLocker.did.js")._SERVICE>}
  */
  export const createActor = (canisterId, options) => {
   const agent = new HttpAgent({ ...options?.agentOptions });
@@ -32,7 +32,7 @@ export const canisterId = process.env.OPEND_CANISTER_ID;
 };
   
 /**
- * A ready-to-use agent for the opend canister
- * @type {import("@dfinity/agent").ActorSubclass<import("./opend.did.js")._SERVICE>}
+ * A ready-to-use agent for the eLocker canister
+ * @type {import("@dfinity/agent").ActorSubclass<import("./eLocker.did.js")._SERVICE>}
  */
- export const opend = createActor(canisterId);
+ export const eLocker = createActor(canisterId);

@@ -1,24 +1,19 @@
 {
   "canisters": {
-    "opend": {
-      "main": "src/opend/main.mo",
+    "eLocker": {
+      "main": "src/eLocker/main.mo",
       "type": "motoko"
     },
-    "nft":{
-      "main":"src/NFT/nft.mo",
+    "nft": {
+      "main": "src/NFT/nft.mo",
       "type": "motoko"
     },
-    "opend_assets": {
-      "dependencies": [
-        "opend"
-      ],
+    "eLocker_assets": {
+      "dependencies": ["eLocker"],
       "frontend": {
-        "entrypoint": "src/opend_assets/src/index.html"
+        "entrypoint": "src/eLocker_assets/src/index.html"
       },
-      "source": [
-        "src/opend_assets/assets",
-        "dist/opend_assets/"
-      ],
+      "source": ["src/eLocker_assets/assets", "dist/eLocker_assets/"],
       "type": "assets"
     }
   },

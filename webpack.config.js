@@ -38,7 +38,7 @@ const canisterEnvVariables = initCanisterEnv();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
-const frontendDirectory = "opend_assets";
+const frontendDirectory = "eLocker_assets";
 
 const asset_entry = path.join("src", frontendDirectory, "src", "index.html");
 
@@ -63,7 +63,7 @@ module.exports = {
       events: require.resolve("events/"),
       stream: require.resolve("stream-browserify/"),
       util: require.resolve("util/"),
-      "crypto": require.resolve("crypto-browserify")
+      crypto: require.resolve("crypto-browserify"),
     },
   },
   output: {
@@ -82,8 +82,8 @@ module.exports = {
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.svg$/, use: ["svg-url-loader"] },
       { test: /\.(jpg|png|webp)$/, use: ["url-loader"] },
-    ]
-   },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, asset_entry),
